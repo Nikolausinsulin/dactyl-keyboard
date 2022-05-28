@@ -8,10 +8,12 @@ pi = 3.14159
 d2r = pi / 180
 r2d = 180 / pi
 
+# note to self: https://code.visualstudio.com/updates/v1_28#_save-without-formatters 
+
 shape_config = {
 
     'ENGINE': 'solid',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
-    # 'ENGINE': 'cadquery',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
+    # 'ENGINE': 'cadquery',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade # i think openCascade refers to this software: https://www.opencascade.com/products/cad-assistant/
 
 
     ######################
@@ -21,11 +23,11 @@ shape_config = {
     'save_dir': '.',
     'config_name':  "DM",
 
-    'show_caps': 'MX',
-    'show_pcbs': False, #only runs if caps are shown, easist place to initially inject geometry
+    'show_caps': '', # default: 'MX' 
+    'show_pcbs': False, #only runs if caps are shown, easist place to initially inject geometry, default: False
 
     'nrows':  5, #5,  # key rows
-    'ncols':  6, #6,  # key columns
+    'ncols':  7, #6,  # key columns
 
     'alpha':  pi / 12.0,  # curvature of the columns
     'beta':  pi / 36.0,  # curvature of the rows
@@ -52,7 +54,7 @@ shape_config = {
     'extra_height': 1.0,  # original= 0.5
 
 
-    'web_thickness': 4.0 + 1.1,
+    'web_thickness': 4.0 + 1.1, # thickness of structural beams in the web 
     'post_size': 0.1,
     # post_adj':  post_size / 2
     'post_adj': 0,
@@ -62,10 +64,10 @@ shape_config = {
     ##############################
 
     # 'DEFAULT' 6-key, 'MINI' 5-key, 'CARBONFET' 6-key, 'MINIDOX' 3-key, 'TRACKBALL_ORBYL', 'TRACKBALL_CJ'
-    'thumb_style': 'DEFAULT',
+    'thumb_style': 'MINIDOX',
     'default_1U_cluster': True, # only used with default, makes top right thumb cluster key 1U
     # Thumb key size.  May need slight oversizing, check w/ caps.  Additional spacing will be automatically added for larger keys.
-    'minidox_Usize': 1.6,
+    'minidox_Usize': 1,
     # Thumb plate rotations, anything other than 90 degree increments WILL NOT WORK.
 
     'mini_index_key': True,
@@ -197,11 +199,11 @@ shape_config = {
 
 
 
-    'wall_z_offset':  15,  # length of the first downward_sloping part of the wall
-    'wall_x_offset':  5,  # offset in the x and/or y direction for the first downward_sloping part of the wall (negative)
-    'wall_y_offset':  6,  # offset in the x and/or y direction for the first downward_sloping part of the wall (negative)
-    'left_wall_x_offset':  12,  # specific values for the left side due to the minimal wall.
-    'left_wall_z_offset':  3,  # specific values for the left side due to the minimal wall.
+    'wall_z_offset':  15,  # length of the first downward_sloping part of the wall, default: 15
+    'wall_x_offset':  5,  # offset in the x and/or y direction for the first downward_sloping part of the wall (negative), default: 5
+    'wall_y_offset':  6,  # offset in the x and/or y direction for the first downward_sloping part of the wall (negative), default: 6
+    'left_wall_x_offset':  12,  # specific values for the left side due to the minimal wall. default: 12
+    'left_wall_z_offset':  3,  # specific values for the left side due to the minimal wall. default: 3
     'left_wall_lower_x_offset': 0,  # specific values for the lower left corner.
     'left_wall_lower_y_offset': 0,  # specific values for the lower left corner.
     'left_wall_lower_z_offset': 0,
@@ -236,9 +238,9 @@ shape_config = {
     # 'HS_UNDERCUT' = hot swap underside with undercut. Does not generate properly.  Hot swap step needs to be modified.
     # 'HS_NOTCH' = hot swap underside with notch.  Does not generate properly.  Hot swap step needs to be modified.
     # 'plate_style':  'NUB',
-    'plate_style': 'NOTCH',
+    'plate_style': 'HOLE', # default NOTCH
 
-    'hole_keyswitch_height':  14.0,
+    'hole_keyswitch_height':  14.0, # default 14.0
     'hole_keyswitch_width':  14.0,
 
     'nub_keyswitch_height':  14.4,
@@ -251,7 +253,7 @@ shape_config = {
     'sa_profile_key_height':  12.7,
     'sa_length': 18.5,
     'sa_double_length': 37.5,
-    'plate_thickness':  4 + 1.1,
+    'plate_thickness':  1 + 1.1, # default 4+1.1
 
     'plate_rim': 1.5 + 0.5,
     # Undercut style dimensions
@@ -273,7 +275,7 @@ shape_config = {
     # 'SLIDING' = Features to slide the OLED in place and use a pin or block to secure from underneath.
     # 'CLIP' = Features to set the OLED in a frame a snap a bezel down to hold it in place.
 
-    'oled_mount_type':  'CLIP',
+    'oled_mount_type':  'NONE', # default: CLIP
     'oled_center_row': 1.25, # if not None, this will override the oled_mount_location_xyz and oled_mount_rotation_xyz settings
     'oled_translation_offset': (0, 0, 4), # Z offset tweaks are expected depending on curvature and OLED mount choice.
     'oled_rotation_offset': (0, 0, 0),
@@ -416,7 +418,7 @@ shape_config = {
     ## Bottom Plate Dimensions
     ###################################
     # COMMON DIMENSION
-    'screw_hole_diameter': 3,
+    'screw_hole_diameter': 3, # default: 3 
     # USED FOR CADQUERY ONLY
     'base_thickness': 3.0, # thickness in the middle of the plate
     'base_offset': 3.0, # Both start flat/flush on the bottom.  This offsets the base up (if positive)
@@ -505,5 +507,5 @@ if __name__ == '__main__':
     save_config()
 
     ## HERE FOR QUICK TESTING, SHOULD BE COMMENTED ON COMMIT
-    # from dactyl_manuform import *
-    # run()
+    from dactyl_manuform import *
+    run()
