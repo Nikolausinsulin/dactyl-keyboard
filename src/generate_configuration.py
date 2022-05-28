@@ -17,9 +17,11 @@ r2d = 180 / pi
 
 # In Anaconda console: 
 # cd C:\Users\Nick\Documents\GitHub\dactyl-keyboard\src
+# cd C:\Users\nikla\Documents\GitHub\dactyl-keyboard\src
 # conda activate dactyl-keyboard
-# python generate_configuration.py 
-# python dactyl_manuform.py 
+# python generate_configuration.py
+# python dactyl_manuform.py
+
 
 
 shape_config = {
