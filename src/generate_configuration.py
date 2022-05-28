@@ -9,6 +9,18 @@ d2r = pi / 180
 r2d = 180 / pi
 
 # note to self: https://code.visualstudio.com/updates/v1_28#_save-without-formatters 
+# ctrl+K ctrl+shift+S to save without formatting
+
+# how to get https://github.com/joshreve/dactyl-keyboard to run
+# install anaconda
+# manually enter all commands in conda.sh in anaconda console
+
+# In Anaconda console: 
+# cd C:\Users\Nick\Documents\GitHub\dactyl-keyboard\src
+# conda activate dactyl-keyboard
+# python generate_configuration.py 
+# python dactyl_manuform.py 
+
 
 shape_config = {
 
